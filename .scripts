@@ -26,3 +26,5 @@ function godir {
         fi
     fi
 }
+
+alias utils="kubectl exec -it deploy/utils -n default bash"
