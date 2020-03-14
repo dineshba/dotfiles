@@ -14,26 +14,6 @@ export HISTFILESIZE=1000000
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 ### fzf
 
-### autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-### autojump
-
-eval $(thefuck --alias)
-
-### terminal prompt
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-kubectl config current-context 2> /dev/null
-have_current_context=$?
-if [ $have_current_context -ne 0 ]; then
-  export KUBE_PROMPT_ENABLED=false
-else
-  #PS1='\[\e[31;47m\]$(kubectl config current-context)\[\e[m\]\[\e[36;47m\]$(kubectl config view --minify --output 'jsonpath={..namespace}')\[\e[m\]\w\[\033[32m\]$(parse_git_branch)\[\033[00m\] \$ '
-  export KUBE_PROMPT_ENABLED=true
-fi
-### terminal prompt
-
 ### custom alias
 #### git
 alias l="exa -la -snew"
@@ -77,9 +57,10 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+eval $(thefuck --alias)
 
 ### temp
 alias helm216=helm
 alias helm=~/Downloads/darwin-amd64/helm
 ### temp
-eval "$(zoxide init bash)"
