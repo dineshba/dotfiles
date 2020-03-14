@@ -1,0 +1,40 @@
+add_newline = false
+
+[kubernetes]
+symbol = "☸ "
+style = "red"
+disabled = false
+
+[cmd_duration]
+disabled = true
+min_time = 2
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+
+[git_status]
+conflicted = "🤞"
+ahead = "ahead"
+behind = "😰"
+diverged = "😵"
+untracked = ""
+stashed = ""
+modified = "~"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+deleted = "--"
+
+[ruby]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[golang]
+disabled = true
+
+[python]
+disabled = true
