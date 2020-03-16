@@ -1,3 +1,23 @@
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/.linkerd2/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+export GPG_TTY=$(tty)
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$PATH:/Users/dineshbalasubramanian/Library/Python/3.7/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+source ~/.scripts
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+eval $(thefuck --alias)
+
 #### to sync history across panes #####
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
@@ -39,28 +59,3 @@ alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|
 alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1)"
 alias baty="bat -l yaml"
 ### custom alias
-
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/.linkerd2/bin"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin
-export GPG_TTY=$(tty)
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$PATH:/Users/dineshbalasubramanian/Library/Python/3.7/bin"
-export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-source ~/.scripts
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-eval "$(starship init bash)"
-eval "$(zoxide init bash)"
-eval $(thefuck --alias)
-
-### temp
-alias helm216=helm
-alias helm=~/Downloads/darwin-amd64/helm
-### temp
