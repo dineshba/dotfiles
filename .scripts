@@ -28,3 +28,58 @@ function godir {
 }
 
 alias utils="kubectl exec -it deploy/utils -n default bash"
+
+#docker shortcuts from https://gist.githubusercontent.com/ashokgowtham/676e5103c6b8f08cb8334381219bdbca/raw/75ce3a1e55a15a8182ea56c8219101b6ae9c7f5a/docker_shortcuts
+
+docker_container_attach() {
+    echo ">>> Select container to attach to"
+    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
+    echo $list
+    [ -z "$list" ] && echo "No container to attach to" || docker exec -it ${list[@]} ${@:-sh}
+}
+docker_container_stop() {
+    echo ">>> Select containers to stop"
+    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info --multi | cut -d ' ' -f 1) )
+    # echo $list
+    [ -z "$list" ] && echo "No containers to stop" || docker container stop -t 1 ${list[@]}
+}
+docker_container_stop_all() {
+    echo ">>> stopping all running containers"
+    list=( $(docker ps -q) )
+    # echo $list
+    [ -z "$list" ] && echo "No containers to stop" || docker container stop -t 1 ${list[@]}
+}
+docker_container_rm() {
+    echo ">>> Select containers to delete"
+    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info --multi | cut -d ' ' -f 1) )
+    # echo $list
+    [ -z "${list[*]}" ] && echo "No containers to delete" || docker container rm ${list[@]}
+}
+docker_container_rm_all() {
+    docker_container_stop_all
+    echo ">>> deleting all containers"
+    list=( $(docker container ls -a -q) )
+    # echo $list
+    [ -z "$list" ] && echo "No containers to delete" || docker container rm ${list[@]}
+}
+docker_image_rm_all() {
+    docker_container_rm_all
+    echo ">>> deleting all images"
+    list=( $(docker image ls -a -q) )
+    # echo $list
+    [ -z "$list" ] && echo "No images to delete" || docker image rm ${list[@]}
+}
+docker_network_rm_all() {
+    echo ">>> deleting all networks"
+    docker network prune -f
+}
+docker_volume_rm_all() {
+    echo ">>> deleting all volumes"
+    docker volume prune -f
+}
+docker_rm_all() {
+    docker_image_rm_all
+    sleep 3
+    docker_volume_rm_all
+    docker_network_rm_all
+}

@@ -17,6 +17,7 @@ export LC_ALL=en_US.UTF-8
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval $(thefuck --alias)
+eval "$(direnv hook bash)"
 
 #### to sync history across panes #####
 export HISTCONTROL=ignoredups:erasedups

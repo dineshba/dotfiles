@@ -1,5 +1,8 @@
 add_newline = false
 
+[battery]
+disabled = true
+
 [kubernetes]
 symbol = "☸ "
 style = "red"
