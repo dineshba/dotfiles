@@ -83,3 +83,9 @@ docker_rm_all() {
     docker_volume_rm_all
     docker_network_rm_all
 }
+docker_container_logs() {
+    echo ">>> Select container see logs"
+    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
+    echo $list
+    [ -z "$list" ] && echo "No container to see logs" || docker logs -f ${list[@]}
+}
