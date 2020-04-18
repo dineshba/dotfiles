@@ -29,6 +29,13 @@ function godir {
 
 alias utils="kubectl exec -it deploy/utils -n default bash"
 
+docker_clean_images() {
+    echo ">>> Select images to be removed"
+    list=( $(docker images | awk '{print $1":"$2}' | fzf -m) )
+    echo $list
+    [ -z "$list" ] && echo "No images selected to remove" || docker rmi ${list[@]}
+}
+
 #docker shortcuts from https://gist.githubusercontent.com/ashokgowtham/676e5103c6b8f08cb8334381219bdbca/raw/75ce3a1e55a15a8182ea56c8219101b6ae9c7f5a/docker_shortcuts
 
 docker_container_attach() {
@@ -46,8 +53,24 @@ docker_container_stop() {
 docker_container_stop_all() {
     echo ">>> stopping all running containers"
     list=( $(docker ps -q) )
-    # echo $list
-    [ -z "$list" ] && echo "No containers to stop" || docker container stop -t 1 ${list[@]}
+    if [[ -z "$list" ]]
+    then
+        echo "No containers to stop"
+        return 0
+    else
+        echo -n "Number of containers running: "
+        echo $(echo $list | wc -l)
+        read -p "Are you sure? " -n 1 -r
+        echo    # (optional) move to a new line
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            docker container stop -t 1 ${list[@]}
+            return 0
+        else
+            echo "Cancelled!"
+            return 1
+        fi
+    fi
 }
 docker_container_rm() {
     echo ">>> Select containers to delete"
