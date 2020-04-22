@@ -38,7 +38,7 @@ docker_clean_images() {
 
 #docker shortcuts from https://gist.githubusercontent.com/ashokgowtham/676e5103c6b8f08cb8334381219bdbca/raw/75ce3a1e55a15a8182ea56c8219101b6ae9c7f5a/docker_shortcuts
 
-docker_container_attach() {
+docker_attach() {
     echo ">>> Select container to attach to"
     list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
     echo $list
@@ -106,7 +106,7 @@ docker_rm_all() {
     docker_volume_rm_all
     docker_network_rm_all
 }
-docker_container_logs() {
+docker_logs() {
     echo ">>> Select container see logs"
     list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
     echo $list
