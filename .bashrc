@@ -7,7 +7,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$PATH:/Users/dineshbalasubramanian/Library/Python/3.7/bin"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
-source ~/.scripts
+source ~/scripts.sh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
