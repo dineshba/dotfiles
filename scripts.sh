@@ -44,6 +44,12 @@ docker_attach() {
     echo $list
     [ -z "$list" ] && echo "No container to attach to" || docker exec -it ${list[@]} ${@:-sh}
 }
+docker_service_ps() {
+    echo ">>> Select service name"
+    list=( $(docker service ls | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
+    echo $list
+    [ -z "$list" ] && echo "No services found" || docker service ps ${list[@]}
+}
 docker_container_stop() {
     echo ">>> Select containers to stop"
     list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info --multi | cut -d ' ' -f 1) )
