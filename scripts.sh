@@ -38,11 +38,11 @@ docker_clean_images() {
 
 #docker shortcuts from https://gist.githubusercontent.com/ashokgowtham/676e5103c6b8f08cb8334381219bdbca/raw/75ce3a1e55a15a8182ea56c8219101b6ae9c7f5a/docker_shortcuts
 
-docker_attach() {
-    echo ">>> Select container to attach to"
+docker_exec() {
+    echo ">>> Select container to exec into"
     list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
     echo $list
-    [ -z "$list" ] && echo "No container to attach to" || docker exec -it ${list[@]} ${@:-sh}
+    [ -z "$list" ] && echo "No container to exec" || docker exec -it ${list[@]} ${@:-sh}
 }
 docker_service_ps() {
     echo ">>> Select service name"
