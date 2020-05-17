@@ -30,6 +30,11 @@ export HISTSIZE=10000000
 export HISTFILESIZE=1000000
 ####
 
+### Fetch in background
+export PATH="$PATH:$HOME/mydotfiles/"
+export PROMPT_COMMAND="gitfetcher.sh; $PROMPT_COMMAND"
+###
+
 ### fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
