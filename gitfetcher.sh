@@ -2,7 +2,7 @@
 
 function fetch_in_background() {
   {
-    echo "fetching git in background"
+    #echo "fetching git in background"
     eval "git fetch --quiet" &> /dev/null
   }&
 }
