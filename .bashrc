@@ -65,6 +65,6 @@ alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|
 alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1)"
 alias baty="bat -l yaml"
 alias dst="docker ps"
-alias openrc="rg ^http .openrc | fzf --select-1 -m | xargs -I{} open {}"
+alias openrc="echo \$(git open -p) | cat .openrc - |rg ^http | fzf --select-1 -m | xargs -I{} open {}"
 alias git-copy="git open -p | pbcopy"
 ### custom alias
