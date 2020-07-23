@@ -68,4 +68,9 @@ alias dst="docker ps"
 alias openrc="echo \$(git open -p) | cat .openrc - |rg ^http | fzf --select-1 -m | xargs -I{} open {}"
 alias oo="openrc"
 alias git-copy="git open -p | pbcopy"
+alias glow="glow -p -w $(tput cols)"
 ### custom alias
+
+### prunehistory on every new pane
+prunehistory 2> /dev/null
+### prunehistory on every new pane
