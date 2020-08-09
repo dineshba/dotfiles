@@ -65,12 +65,14 @@ alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|
 alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1)"
 alias baty="bat -l yaml"
 alias dst="docker ps"
-alias openrc="echo \$(git open -p) | cat .openrc - |rg ^http | fzf --select-1 -m | xargs -I{} open {}"
 alias oo="openrc"
 alias git-copy="git open -p | pbcopy"
 alias glow="glow -p -w $(tput cols)"
+alias echo="tput setaf 2; tput bold; echo" # green colored bold text in echo output
 ### custom alias
 
 ### prunehistory on every new pane
 prunehistory 2> /dev/null
 ### prunehistory on every new pane
+
+export EDITOR=vim
