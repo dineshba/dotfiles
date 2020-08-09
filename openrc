@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+gitUrl=$(git open -p)
+fileContent=$gitUrl
+file=".openrc"
+if [ -f "$file" ]
+then
+  suffix=""
+  [ -n "$2" ] && suffix="/$2"
+  query=""
+  [ -n "$1" ] && query="--query $1 -e"
+	echo $gitUrl | cat $file - |rg ^http | fzf $query --select-1 -m | xargs -I{} open {}$suffix
+else
+    open $gitUrl
+fi
