@@ -6,7 +6,7 @@ disabled = true
 [kubernetes]
 symbol = "☸ "
 style = "red"
-disabled = false
+disabled = true
 
 [cmd_duration]
 disabled = true
@@ -18,9 +18,6 @@ truncate_to_repo = false
 
 [git_status]
 conflicted = "🤞"
-ahead = "ahead"
-behind = "😰"
-diverged = "😵"
 untracked = ""
 stashed = ""
 modified = "~"
@@ -29,6 +26,15 @@ staged.style = "green"
 staged_count.enabled = true
 staged_count.style = "green"
 deleted = "--"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+format = '([$all_status$ahead_behind]($style) )'
+
+[status]
+style = "bg:blue"
+symbol = "💣 "
+disabled = false
 
 [ruby]
 disabled = true
@@ -43,4 +49,13 @@ disabled = true
 disabled = true
 
 [python]
+disabled = true
+
+[terraform]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[package]
 disabled = true
