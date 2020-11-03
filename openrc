@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Examples:
+# openrc
+# openrc git # search for url having git in the name, if one match, opens directly without fzf prompt
+# openrc git pulls # add suffix /pulls before opening url
+
 gitUrl=$(git open -p)
 fileContent=$gitUrl
 file=".openrc"
