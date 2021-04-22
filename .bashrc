@@ -63,13 +63,22 @@ alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' |
 alias ip="ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2"
 alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|info" | rg ".git/objects/|/" -r ""); do echo -n $a; echo -n " "; echo $(git cat-file -t $a); done;'
 alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1)"
-alias gdx="git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1 | xargs -I{} git push origin :{}"
 alias baty="bat -l yaml"
 alias dst="docker ps"
 alias oo="openrc"
 alias git-copy="git open -p | pbcopy"
 alias glow="glow -p -w $(tput cols)"
 alias echo="tput setaf 2; tput bold; echo" # green colored bold text in echo output
+
+function gdx() {
+ echo "Start Prune branches"
+ git fetch --prune
+ echo "Done Prune branches"
+ local branch=$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1 | tr -d '[:space:]')
+ set +xe
+ git push origin :$branch
+ git branch -d $branch
+}
 ### custom alias
 
 ### prunehistory on every new pane
