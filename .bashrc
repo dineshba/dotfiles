@@ -74,7 +74,8 @@ function gdx() {
  echo "Start Prune branches"
  git fetch --prune
  echo "Done Prune branches"
- local branch=$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1 | tr -d '[:space:]')
+ local branch=$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf | tr -d '[:space:]')
+ [ -z "$branch" ] && echo "Choose one branch!" && return
  set +xe
  git push origin :$branch
  git branch -d $branch
