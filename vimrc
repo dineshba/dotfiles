@@ -28,10 +28,6 @@ call plug#begin(expand('~/.vim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 
-" NERDTree file explorer
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-
 " Better commenting
 Plug 'tpope/vim-commentary'
 
@@ -70,9 +66,6 @@ Plug 'tomasr/molokai'
 
 " Local file change history
 Plug 'mbbill/undotree'
-
-" GoLang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
