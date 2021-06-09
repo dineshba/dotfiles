@@ -4,7 +4,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin
 export GPG_TTY=$(tty)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$PATH:/Users/dineshbalasubramanian/Library/Python/3.7/bin"
+export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 source ~/scripts.sh
@@ -93,4 +93,5 @@ export BAT_THEME="DarkNeon"
 
 alias jwt="jq -R 'split(\".\") | .[1] | @base64d | fromjson' <<<"
 export GOPATH=$HOME/go
-export PATH=$PATH:/Users/dineshb/google-cloud-sdk/bin
+export PATH=$PATH:$HOME/google-cloud-sdk/bin
+alias okta="bw get password thoughtworks.okta.com | pbcopy"
