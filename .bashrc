@@ -68,7 +68,6 @@ alias dst="docker ps"
 alias oo="openrc"
 alias git-copy="git open -p | pbcopy"
 alias glow="glow -p -w $(tput cols)"
-alias echo="tput setaf 2; tput bold; echo" # green colored bold text in echo output
 
 function gdx() {
  echo "Start Prune branches"
@@ -94,3 +93,4 @@ export BAT_THEME="DarkNeon"
 
 alias jwt="jq -R 'split(\".\") | .[1] | @base64d | fromjson' <<<"
 export GOPATH=$HOME/go
+export PATH=$PATH:/Users/dineshb/google-cloud-sdk/bin

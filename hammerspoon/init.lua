@@ -43,6 +43,10 @@ hs.hotkey.bind(hyperKey, "t", function()
   hs.application.launchOrFocus("Microsoft Teams")
 end)
 
-hs.hotkey.bind(hyperKey, "f", function()
+hs.hotkey.bind(hyperKey, "a", function()
   hs.application.launchOrFocus("FaceTime.app")
+end)
+
+hs.hotkey.bind(hyperKey, "s", function()
+  hs.caffeinate.systemSleep()
 end)
