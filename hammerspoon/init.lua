@@ -32,6 +32,7 @@ hs.hotkey.bind(hyperKey, "s", function()
 end)
 
 hs.hotkey.bind(hyperKey, "b", function()
+  hs.execute [["export" "MOZ_DISABLE_SAFE_MODE_KEY" "1"]]
   hs.application.launchOrFocus("Firefox")
 end)
 
@@ -49,4 +50,8 @@ end)
 
 hs.hotkey.bind(hyperKey, "s", function()
   hs.caffeinate.systemSleep()
+end)
+
+hs.hotkey.bind(hyperKey, "e", function()
+  hs.application.launchOrFocus("Ferdi.app")
 end)

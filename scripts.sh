@@ -15,7 +15,7 @@ function previewSelection {
 export -f previewSelection
 
 function godir {
-    directory=$(fd -E vendor -d 5 . ${HOME}/projects/ | fzf --color 16 --preview "previewSelection {}" --height 80%  )
+    directory=$(fd -E vendor -d 5 . ${HOME}/projects/ | fzf --query $1 --color 16 --preview "previewSelection {}" --height 80%  )
     if [ ! -z  "$directory" ]; then
         if [ ! -d "$directory" ]; then
             # Its a file. cd to the directory.

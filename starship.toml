@@ -21,10 +21,7 @@ conflicted = "🤞"
 untracked = ""
 stashed = ""
 modified = "~"
-staged.value = "++"
-staged.style = "green"
-staged_count.enabled = true
-staged_count.style = "green"
+staged = '[++$count](green)'
 deleted = "--"
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
@@ -52,7 +49,8 @@ disabled = true
 disabled = true
 
 [terraform]
-disabled = true
+disabled = false
+format = "🪣 [$workspace]($style) 🪣 "
 
 [gcloud]
 disabled = true

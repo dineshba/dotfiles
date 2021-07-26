@@ -66,6 +66,7 @@ alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '
 alias baty="bat -l yaml"
 alias dst="docker ps"
 alias oo="openrc"
+alias cc="code ."
 alias git-copy="git open -p | pbcopy"
 alias glow="glow -p -w $(tput cols)"
 
