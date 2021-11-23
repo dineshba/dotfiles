@@ -44,3 +44,7 @@ end)
 hs.hotkey.bind(hyperKey, "e", function()
   hs.application.launchOrFocus("Ferdi.app")
 end)
+
+hs.hotkey.bind(hyperKey, "c", function()
+  hs.application.launchOrFocus("IntelliJ IDEA.app")
+end)

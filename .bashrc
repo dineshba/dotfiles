@@ -66,14 +66,18 @@ alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '
 alias baty="bat -l yaml"
 alias dst="docker ps"
 alias oo="openrc"
-alias cc="code ."
 alias git-copy="git open -p | pbcopy"
 alias glow="glow -p -w $(tput cols)"
+
+function cc() {
+  code "${1:-.}"
+}
 
 function gdx() {
  echo "Start Prune branches"
  git fetch --prune
  echo "Done Prune branches"
+ echo "Will delete both local and remote branch"
  local branch=$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf | tr -d '[:space:]')
  [ -z "$branch" ] && echo "Choose one branch!" && return
  set +xe

@@ -157,18 +157,19 @@ tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=' ❐ #S | 💻#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #(bash ~/mydotfiles/kube.tmux 250 colour9 cyan) | Gcloud: #(gcloud config list account --format "value(core.account)" | sed "s/@.*//")'
-tmux_conf_theme_status_right='#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{username}#{root}'
+tmux_conf_theme_status_left=' ❐ #S'
+tmux_conf_theme_status_right='#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | 💻#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #(bash ~/mydotfiles/kube.tmux 250 colour6 cyan) | Gcloud: #(gcloud config list account --format "value(core.account)" | sed "s/@.*//")'
 
 # status left style
-tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
-tmux_conf_theme_status_left_bg='#ffff00,#ff00af,#222222,#00afff'  # yellow, pink, dark grey, blue
+tmux_conf_theme_status_left_fg='#000000,#000000'  # black, white , white
+tmux_conf_theme_status_left_bg='#ffff00,#00afff'  # yellow, pink, blue
 tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
-tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000' # light gray, white, black
-tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4' # dark gray, red, white
-tmux_conf_theme_status_right_attr='none,none,bold'
+# from right to left
+tmux_conf_theme_status_right_fg='#ffff00,#e4e4e4,#000000,#000000' # yellow, light gray, white, black
+tmux_conf_theme_status_right_bg='#000000,#d70000,#222222,#ffff00' # blue, red, dark gray,
+tmux_conf_theme_status_right_attr='none,none,bold,none'
 
 # pairing indicator
 tmux_conf_theme_pairing='👓 '          # U+1F453
