@@ -58,7 +58,7 @@ alias cat=bat
 alias k=kubectl
 alias gogo='cd $(find ~/go/src -type d -maxdepth 4 | fzf)'
 alias got='cd $(find ~/projects/trials -type d -maxdepth 2 | fzf)'
-alias tmuxx='tmuxp load $(ls ~/.tmuxp/*.yaml | rg ".*/.tmuxp/" -r "" | rg "\.yaml" -r "" | fzf) --yes'
+alias tmuxx='tmuxp load $(ls ~/.tmuxp/*.yaml | rg ".*/.tmuxp/" -r "" | rg "\.yaml" -r "" | fzf --select-1) --yes'
 alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf -m); do tmux kill-session -t \$s; done;"
 alias ip="ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2"
 alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|info" | rg ".git/objects/|/" -r ""); do echo -n $a; echo -n " "; echo $(git cat-file -t $a); done;'
@@ -93,6 +93,34 @@ prunehistory 2> /dev/null
 export EDITOR=vim
 export DOCKER_BUILDKIT=1
 export BAT_THEME="DarkNeon"
+
+# join zoom meeting
+zoom() {
+  name=$(cat $HOME/.zoom-ids.json | jq -r ".[] | .name" | fzf --query ${1:-""} --select-1 --height=10 --ansi --reverse)
+  qparams=$(cat $HOME/.zoom-ids.json | jq -r ".[] | select(.name == \"$name\") | \"confno=\" + .id + \"&pwd=\" + .pwd ")
+  open "zoommtg://zoom.us/join?$qparams"
+}
+
+zoom-join-add() {
+  config_file=$HOME/.zoom-ids.json
+  touch $config_file
+
+  echo "Enter the meeting id"
+  read meeting_id
+  echo "Enter the name"
+  read name
+  echo "Enter the pwd"
+  read pwd
+
+  tmpDir=$(mktemp -d -t tmp.XXXXXXXXXX)
+  echo "[{\"name\": \"$name\",\"id\": \"$meeting_id\",\"pwd\": \"$pwd\"}]" > $tmpDir/new-zoom-id.json
+
+  jq -s '.[0] + .[1]' $config_file $tmpDir/new-zoom-id.json > $tmpDir/.zoom-ids.json
+  cp $tmpDir/.zoom-ids.json $config_file
+
+  echo "New entry added: {\"name\": \"$name\",\"id\": \"$meeting_id\",\"pwd\": \"$pwd\"}"
+  rm -rf $tmpDir
+}
 
 # complete -F __start_kubectl k
 

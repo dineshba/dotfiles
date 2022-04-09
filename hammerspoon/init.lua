@@ -46,5 +46,5 @@ hs.hotkey.bind(hyperKey, "e", function()
 end)
 
 hs.hotkey.bind(hyperKey, "c", function()
-  hs.application.launchOrFocus("IntelliJ IDEA.app")
+  hs.application.launchOrFocus("Visual Studio Code.app")
 end)

@@ -6,7 +6,6 @@
 # openrc git pulls # add suffix /pulls before opening url
 
 gitUrl=$(git open -p)
-fileContent=$gitUrl
 file=".openrc"
 if [ -f "$file" ]
 then
