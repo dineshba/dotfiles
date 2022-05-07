@@ -31,7 +31,7 @@ export HISTFILESIZE=1000000
 ####
 
 ### Fetch in background
-export PATH="$PATH:$HOME/mydotfiles/"
+export PATH="$PATH:$HOME/dotfiles/"
 export PROMPT_COMMAND="gitfetcher.sh; $PROMPT_COMMAND"
 ###
 
