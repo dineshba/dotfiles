@@ -13,7 +13,7 @@ then
   [ -n "$2" ] && suffix="/$2"
   query=""
   [ -n "$1" ] && query="--query $1 -e"
-	echo $gitUrl | cat $file - |rg ^http | fzf $query --select-1 -m | xargs -I{} open {}$suffix
+	echo $gitUrl | cat $file - |rg ^http | fzf $query --select-1 -m | xargs -I{} xdg-open {}$suffix
 else
-    open $gitUrl
+    xdg-open $gitUrl
 fi
