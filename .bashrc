@@ -62,6 +62,7 @@ alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' |
 alias ip="ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2"
 alias list_objects='for a in $(find .git/objects -type f -depth 2 | rg -v "pack|info" | rg ".git/objects/|/" -r ""); do echo -n $a; echo -n " "; echo $(git cat-file -t $a); done;'
 alias gcx="gco \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --select-1)"
+alias gtx="gco \$(git tag | sort |uniq | fzf --select-1)"
 alias baty="bat -l yaml"
 alias dst="docker ps"
 alias oo="openrc"
@@ -121,6 +122,7 @@ zoom-join-add() {
   rm -rf $tmpDir
 }
 
+alias rg="rg --hidden --glob '!.git'"
 # complete -F __start_kubectl k
 
 alias jwt="jq -R 'split(\".\") | .[1] | @base64d | fromjson' <<<"

@@ -49,7 +49,7 @@ disabled = true
 disabled = true
 
 [terraform]
-disabled = false
+disabled = true
 format = "🪣 [$workspace]($style) 🪣 "
 
 [gcloud]
