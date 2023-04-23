@@ -55,5 +55,8 @@ format = "🪣 [$workspace]($style) 🪣 "
 [gcloud]
 disabled = true
 
+[c]
+disabled =true
+
 [package]
 disabled = true

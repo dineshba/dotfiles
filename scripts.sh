@@ -44,7 +44,7 @@ docker_clean_images() {
 
 docker_exec() {
     echo ">>> Select container to exec into"
-    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
+    list=( $(docker ps | grep -v CONTAINER | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
     echo $list
     [ -z "$list" ] && echo "No container to exec" || docker exec -it ${list[@]} ${@:-sh}
 }

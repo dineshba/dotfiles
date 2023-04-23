@@ -268,5 +268,11 @@ set -g mode-keys vi
 # move status line to top
 set -g status-position top
 
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi Escape send-keys -X cancel
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "/mnt/c/Windows/System32/clip.exe"
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "/mnt/c/Windows/System32/clip.exe"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "/mnt/c/Windows/System32/clip.exe"
+
 # on attach create a new session if no sessions exist
 new-session

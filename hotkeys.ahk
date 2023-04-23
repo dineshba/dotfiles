@@ -132,8 +132,9 @@ else
     return
 }
 
-~CapsLock & space::ToggleAlacrittyVisibility("ahk_exe Alacritty.exe")
+~CapsLock & space::ToggleTerminal()
 
+; not using it, as there is bug in copy paste with alacritty. When copy and paste in any application, that application hungs.
 ToggleAlacrittyVisibility(windowClass) {
   DetectHiddenWindows, on
 
