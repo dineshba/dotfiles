@@ -32,6 +32,11 @@ function gogo {
     godir ${1:-""} $GOPATH
 }
 
+function gcx {
+    branch=$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | rg -v '\*|HEAD' | sort |uniq | fzf --query ${1:-""} --select-1)
+    [ -z "$branch" ] && echo "branch not selected" || git checkout $branch
+}
+
 alias utils="kubectl exec -it deploy/utils -n default bash"
 
 docker_clean_images() {
