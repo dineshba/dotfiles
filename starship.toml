@@ -43,14 +43,14 @@ disabled= true
 disabled = true
 
 [golang]
-disabled = true
+disabled = false
 
 [python]
 disabled = true
 
 [terraform]
 disabled = true
-format = "🪣 [$workspace]($style) 🪣 "
+format = "🪣 [$workspace]($style) "
 
 [gcloud]
 disabled = true

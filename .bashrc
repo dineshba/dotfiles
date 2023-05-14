@@ -54,9 +54,11 @@ alias gameo="git commit --amend --no-edit"
 alias gds="git diff --staged"
 alias gc="git commit -s -S -m"
 #### git
+alias bat=batcat
 alias cat=batcat
 alias fd=fdfind
 alias k=kubectl
+alias ls="exa"
 alias l="ls -la"
 alias tmuxx='tmuxp load $(ls ~/.tmuxp/*.yaml | rg ".*/.tmuxp/" -r "" | rg "\.yaml" -r "" | fzf --select-1) --yes'
 alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf -m); do tmux kill-session -t \$s; done;"

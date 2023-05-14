@@ -1,3 +1,4 @@
+# godir from https://aswinkarthik.dev/post/directory-navigation/
 function previewSelection {
     directory=$1
     if [ ! -z  "$directory" ]; then
@@ -84,7 +85,7 @@ docker_container_stop_all() {
 }
 docker_container_rm() {
     echo ">>> Select containers to delete"
-    list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info --multi | cut -d ' ' -f 1) )
+    list=( $(docker ps -a | fzf --height=10 --layout=reverse --inline-info --multi | cut -d ' ' -f 1) )
     # echo $list
     [ -z "${list[*]}" ] && echo "No containers to delete" || docker container rm ${list[@]}
 }
@@ -121,4 +122,11 @@ docker_logs() {
     list=( $(docker ps | fzf --height=10 --layout=reverse --inline-info | cut -d ' ' -f 1) )
     echo $list
     [ -z "$list" ] && echo "No container to see logs" || docker logs -f ${list[@]}
+}
+
+function go_switch() {
+    version=$(ls /usr/lib/ | grep "go-" | fzf)
+    sudo rm -rf /usr/local/bin/go
+    sudo ln -s /usr/lib/$version/bin/go /usr/local/bin/go
+    echo "selected version $(go version)"
 }
