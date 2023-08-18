@@ -76,6 +76,8 @@ function cc() {
   code "${1:-.}"
 }
 
+alias gcmain="git checkout \$(git branch -a | rg '^  main|^  master')"
+
 function gdx() {
  echo "Start Prune branches"
  git fetch --prune

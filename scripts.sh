@@ -129,7 +129,7 @@ docker_logs() {
     [ -z "$list" ] && echo "No container to see logs" || docker logs -f ${list[@]}
 }
 
-function go_switch() {
+function govm() {
     version=$(ls /usr/lib/ | grep "go-" | fzf)
     sudo rm -rf /usr/local/bin/go
     sudo ln -s /usr/lib/$version/bin/go /usr/local/bin/go
